@@ -166,40 +166,4 @@
   <hr />
 </div>
 
-<section id="problem" class="row">
-    <div class="col-md-12">
-        <h2>{% trans %}Problem?{% endtrans %}</h2>
-        <p>
-            {% trans -%}
-            This is alpha software, and we expect bugs and weirdness. You can help by opening an issue for us to report any problems.
-            {%- endtrans %}
-            <br />
-            <a target="_blank" href="{{ new_issue }}">{% trans %}Report an issue{% endtrans %}</a>
-        </p>
-    </div>
-</section>
-
-<section id="documentation" class="row">
-  <div class="col-md-12">
-    <h2>{% trans %}What is Good Tables?{% endtrans %}</h2>
-    <p>
-      {% trans %}Good Tables is a free online service that helps you find out if your tabular data is actually good to use - it can check for structural problems (blank rows and columns) as well as ensure that data fits a specific schema.{% endtrans %}
-    </p>
-    <p>
-      {% trans %}Tabular data in CSV and Excel formats is one the most common forms of data available on the web - especially if looking at <a href="http://okfn.org/opendata/">open data</a>. Unfortunately, much of that data is messy with blank and incorrect rows, and unexpected values for some fields. (For example, date columns that do not feature well-formed dates. <a href="http://okfnlabs.org/bad-data/">See here for more examples of "bad data"</a>.){% endtrans %}
-    </p>
-    <p>
-      {% trans %}That’s where Good Tables comes in: it checks your data for you, giving you quick and simple feedback on where your tabular data may not yet be quite perfect.{% endtrans %}
-    </p>
-    <h3>{% trans %}See it in action{% endtrans %}</h3>
-    <div class="pull-left">
-      <iframe width="560" height="316" src="https://www.youtube.com/embed/f1bTx6Zaotk" frameborder="0" allowfullscreen></iframe>
-      <p>&nbsp;</p>
-    </div>
-    <div class="pull-left">
-      <iframe width="560" height="316" src="https://www.youtube.com/embed/hblUuIjobrc" frameborder="0" allowfullscreen></iframe>
-    </div>
-  </div>
-</section>
-
 {% endblock content %}
