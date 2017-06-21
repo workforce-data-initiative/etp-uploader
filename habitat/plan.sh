@@ -26,9 +26,10 @@ do_unpack() {
   mkdir -p $pkg_prefix
   # copy the contents of the source directory to the habitat cache path
   build_line "Copying project data /src to $pkg_prefix ..."
-  cp -r $PROJECT_ROOT/etp_api $pkg_prefix/
+  cp -r $PROJECT_ROOT/web $pkg_prefix/
   cp -r $PROJECT_ROOT/tests $pkg_prefix/
   cp -r $PROJECT_ROOT/*.py $pkg_prefix/
+  cp -r $PROJECT_ROOT/requirements $pkg_prefix/
   cp -r $PROJECT_ROOT/requirements.txt $pkg_prefix/
 }
 
