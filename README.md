@@ -1,5 +1,6 @@
 # Good Tables Web
 
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
 [![Travis Build Status](https://travis-ci.org/frictionlessdata/goodtables.io.svg?branch=master)](https://travis-ci.org/frictionlessdata/goodtables.io)
 [![Coverage Status](https://coveralls.io/repos/frictionlessdata/goodtables.io/badge.svg)](https://coveralls.io/r/frictionlessdata/goodtables.io)
 
