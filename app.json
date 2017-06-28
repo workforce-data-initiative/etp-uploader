@@ -2,5 +2,10 @@
   "name": "ETP Uploader",
   "description": "A prototype web service for validating and collecting participant files from eligible training providers",
   "repository": "https://github.com/workforce-data-initiative/etp-uploader",
-  "keywords": ["python", "flask"]
+  "keywords": ["python", "flask"],
+  "env": {
+    "JSON_TABLE_SCHEMA_URL": {
+      "description": "Specify the location of your JSON Table Schema"
+    }
+  }
 }
