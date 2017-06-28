@@ -103,7 +103,7 @@ class RunForm(Form):
     data_url = fields.StringField(**data_url_args)
     data_file = fields.FileField(**data_file_args)
     format = fields.SelectField(**format_args)
-    schema_url = fields.StringField(**schema_url_args)
+    schema_url = fields.StringField(default="https://gist.githubusercontent.com/mbauman/29de75c1e7f6a06976a633386190a879/raw/278f1270644331b6d430b774ecd28ba0d21ece46/gistfile1.txt", **schema_url_args)
     schema_file = fields.FileField(**schema_file_args)
     schema_eg = fields.SelectField(**schema_eg_args)
     fail_fast = fields.BooleanField(default=False, **fail_fast_args)
