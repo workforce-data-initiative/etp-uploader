@@ -1,12 +1,12 @@
-# Good Tables Web
+# ETP Uploader
 
 [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/workforce-data-initiative/etp-uploader/tree/wdi)
 [![Travis Build Status](https://travis-ci.org/frictionlessdata/goodtables.io.svg?branch=master)](https://travis-ci.org/frictionlessdata/goodtables.io)
 [![Coverage Status](https://coveralls.io/repos/frictionlessdata/goodtables.io/badge.svg)](https://coveralls.io/r/frictionlessdata/goodtables.io)
 
-A web API for validating data tables against a validation pipeline.
+A prototype web service for validating and collecting participant files from eligible training providers
 
-This package is part of a suite of table validation tools, providing a lightweight web interface to [Good Tables](https://github.com/okfn/goodtables).
+This package uses a suite of table validation tools based upon [Good Tables](https://github.com/okfn/goodtables).
 
 ## Runtime support
 
