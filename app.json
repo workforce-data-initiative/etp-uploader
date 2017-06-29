@@ -6,6 +6,9 @@
   "env": {
     "JSON_TABLE_SCHEMA_URL": {
       "description": "Specify the location of your JSON Table Schema"
+    },
+    "S3_BUCKET_NAME": {
+      "description": "Specify the S3 bucket name to use for uploads"
     }
   }
 }
