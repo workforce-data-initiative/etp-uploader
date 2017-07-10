@@ -6,8 +6,8 @@ pkg_filename=${pkg_name}-${pkg_version}.tar.gz
 pkg_upstream_url="https://github.com/workforce-data-initiative/etp-uploader.git"
 pkg_exports=([port]=listening_port)
 pkg_exposes=(port)
-pkg_build_deps=(core/virtualenv core/gcc core/glibc)
-pkg_deps=(core/python core/coreutils)
+pkg_build_deps=(core/virtualenv)
+pkg_deps=(core/python core/glibc)
 pkg_interpreters=(bin/python3)
 pkg_licence=('MIT')
 

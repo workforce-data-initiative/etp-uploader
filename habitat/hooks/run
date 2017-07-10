@@ -7,4 +7,4 @@ cd {{pkg.svc_var_path}}
 source venv/bin/activate
 
 # start the server
-gunicorn wsgi --bind 0.0.0.0:5000
+gunicorn wsgi --bind 0.0.0.0:8080
