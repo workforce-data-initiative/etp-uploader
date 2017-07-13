@@ -1,15 +1,16 @@
 pkg_origin=brighthive
 pkg_name=etp-uploader
 pkg_version=0.1.0
+pkg_licence=('MIT')
 pkg_maintainer="jee@brighthive.io, aretha@brighthive.io, stanley@brighthive.io"
 pkg_filename=${pkg_name}-${pkg_version}.tar.gz
 pkg_upstream_url="https://github.com/workforce-data-initiative/etp-uploader.git"
+pkg_build_deps=(core/virtualenv core/gcc core/gcc-libs core/glibc)
+pkg_deps=(core/python core/coreutils)
 pkg_exports=([port]=listening_port)
 pkg_exposes=(port)
-pkg_build_deps=(core/virtualenv)
-pkg_deps=(core/python core/glibc)
 pkg_interpreters=(bin/python3)
-pkg_licence=('MIT')
+
 
 do_verify () {
   return 0
@@ -20,9 +21,10 @@ do_clean() {
 }
 
 do_unpack() {
+  # build_line "Exporting LD_RUN_PATH ..."
+  # export LD_RUN_PATH=/usr/local/lib
   # create a env variable for the project root
   PROJECT_ROOT="${PLAN_CONTEXT}/.."
-
   mkdir -p $pkg_prefix
   # copy the contents of the source directory to the habitat cache path
   build_line "Copying project data /src to $pkg_prefix ..."
@@ -43,8 +45,19 @@ do_unpack() {
 }
 
 do_build() {
-  return 0
+  # build_line "Building python with shared libraries ..."
+  # PYTHON_VERSION=3.6.0
+  # mkdir -p /usr/src/python \
+  #   && wget -SL "https://www.python.org/ftp/python/$PYTHON_VERSION/Python-$PYTHON_VERSION.tar.xz" \
+  #   && tar -xJf "Python-$PYTHON_VERSION.tar.xz" -C /usr/src/python --strip-components=1 \
+  #   && cd /usr/src/python \
+  #   && ./configure --enable-shared \
+  #   && make -j$(nproc) \
+  #   && make install \
+  #   && cd / \
+  #   && rm -rf /usr/src/python
   # ./build.sh
+  return 0
 }
 
 do_install() {

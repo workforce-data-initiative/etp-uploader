@@ -1,10 +1,10 @@
-#!/bin/sh -xe
+#!/bin/bash -xe
 
 # Allows to see errors as they occur
 exec 2>&1
 
 cd {{pkg.svc_var_path}}
 source venv/bin/activate
-
+# export LD_RUN_PATH=/hab/pkgs/core/python/3.6.0/20170514005805/lib
 # start the server
 gunicorn wsgi --bind 0.0.0.0:8080
