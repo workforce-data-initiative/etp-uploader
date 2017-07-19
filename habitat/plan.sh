@@ -6,10 +6,9 @@ pkg_maintainer="jee@brighthive.io, aretha@brighthive.io, stanley@brighthive.io"
 pkg_filename=${pkg_name}-${pkg_version}.tar.gz
 pkg_upstream_url="https://github.com/workforce-data-initiative/etp-uploader.git"
 pkg_build_deps=(core/virtualenv core/gcc core/gcc-libs core/glibc)
-pkg_deps=(core/python core/coreutils)
+pkg_deps=(core/bash core/coreutils core/python)
 pkg_exports=([port]=listening_port)
 pkg_exposes=(port)
-pkg_interpreters=(bin/python3)
 
 
 do_verify () {
@@ -46,25 +45,24 @@ do_unpack() {
 
 do_build() {
   # build_line "Building python with shared libraries ..."
-  # PYTHON_VERSION=3.6.0
+  # PYTHON_VERSION=3.4.0
   # mkdir -p /usr/src/python \
   #   && wget -SL "https://www.python.org/ftp/python/$PYTHON_VERSION/Python-$PYTHON_VERSION.tar.xz" \
   #   && tar -xJf "Python-$PYTHON_VERSION.tar.xz" -C /usr/src/python --strip-components=1 \
   #   && cd /usr/src/python \
-  #   && ./configure --enable-shared \
+  #   && ./configure \
   #   && make -j$(nproc) \
   #   && make install \
-  #   && cd / \
-  #   && rm -rf /usr/src/python
-  # ./build.sh
+  # && cd / \
+  # && rm -rf /usr/src/python
   return 0
 }
 
 do_install() {
   cd $pkg_prefix
   build_line "Creating a virtual environment ..."
-  virtualenv venv -p python3
-  source venv/bin/activate
+  python3 -m venv venv
+  . venv/bin/activate
   build_line "Installing requirements from requirements.txt ..."
   pip install -r requirements.txt
 }
