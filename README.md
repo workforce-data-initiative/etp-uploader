@@ -8,9 +8,22 @@ A prototype web service for validating and collecting participant files from eli
 
 This package uses a suite of table validation tools based upon [Good Tables](https://github.com/okfn/goodtables).
 
+## The JSON Table Schema
+
+The heart of this package is the [JSON Table Schema](https://specs.frictionlessdata.io/table-schema/)
+that describes the required fields and their constraints. A draft specification
+is described within the [etp-uploader-schema.json](etp-uploader-schema.json).
+
+**TODO**: It would be nice to use the description field when displaying validation
+errors in order to give more effective feedback to the users when their data file
+isn't valid.
+
+## GoodTables-py
+
 ## Runtime support
 
-Planned support for Python 2.7, 3.3 and 3.4. Some tests currently fail on 2.7. Development is proceeding on 3.4.
+Currently runs on Python 3.6.1.  Some historic support for 2.7, but development is
+conducted on Python 3.6+.
 
 ## Quickstart
 

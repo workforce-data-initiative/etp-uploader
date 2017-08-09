@@ -1,0 +1,71 @@
+{
+    "fields": [
+        {
+            "name": "participant_id",
+            "type": "integer",
+            "constraints": {
+                "required": true
+            }
+        },
+        {
+            "name": "program_name",
+            "type": "string",
+            "constraints": {
+                "required": true
+            }
+        },
+        {
+            "name": "program_potential_outcome",
+            "type": "integer",
+            "constraints": {
+                "required": true,
+                "minimum": 0,
+                "maximum": 9
+            }
+        },
+        {
+            "name": "program_cip",
+            "type": "string",
+            "constraints": {
+                "required": true,
+                "pattern": "\\d\\d\\.\\d\\d\\d?\\d?"
+            }
+        },
+        {
+            "name": "wioa_participant",
+            "type": "boolean",
+            "constraints": {
+                "required": true
+            }
+        },        
+        {
+            "name": "date_of_entry",
+            "type": "date",
+            "format": "any",
+            "constraints": {
+                "required": true
+            }
+        },
+        {
+            "name": "date_of_exit",
+            "type": "date",
+            "format": "any",
+            "constraints": {
+                "required": true
+            }
+        },
+        {
+            "name": "type_of_exit",
+            "type": "string"
+        },
+        {
+            "name": "obtained_credential",
+            "type": "boolean",
+            "constraints": {
+                "required": true
+            }
+        }
+    ],
+    "trueValues": [ "true" ],
+    "falseValues": [ "false" ]
+}
