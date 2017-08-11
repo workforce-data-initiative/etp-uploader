@@ -5981,7 +5981,7 @@ h1.panel-heading, .pricing-panel > div:first-child > h1, h2.panel-heading, .pric
   position: relative;
   display: block; }
   .navbar-brand .text:before {
-    content: 'Workforce Data Initiative';
+    content: 'Open Knowledge';
     display: block;
     font-size: 10px;
     color: #7ab800;
