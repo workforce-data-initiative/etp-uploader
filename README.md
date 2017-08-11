@@ -18,7 +18,14 @@ is described within the [etp-uploader-schema.json](etp-uploader-schema.json).
 errors in order to give more effective feedback to the users when their data file
 isn't valid.
 
-## GoodTables-py
+## Goodtables-py
+
+The ETP Uploader package uses [Frictionless Data's Goodtables Python package](https://github.com/frictionlessdata/goodtables-py)
+to do its heavy lifting.  That library recently made some breaking API upgrade to
+version 1.0, but this package still uses the older 0.7.x API.  In the future it
+will be beneficial to migrate to the newer API, but for now we are using a
+[custom fork](https://github.com/workforce-data-initiative/goodtables-py) to
+provide ongoing support for the 0.7.x API.
 
 ## Runtime support
 
