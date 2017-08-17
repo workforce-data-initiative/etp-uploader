@@ -96,7 +96,7 @@ curl http://goodtables.okfnlabs.org/api/run --data "data=https://raw.githubuserc
             "result_message": "Row 1 is defective: there are more cells than headers", # a message that describes the result
             "result_name": "Defective Row", # a human-readable title for this result
             "result_context": ['38', 'John', '', ''], # the row values from which this result triggered
-            "row_index": 1, # the idnex of the row
+            "row_index": 1, # the index of the row
             "row_name": "", # If the row has an id field, this is displayed, otherwise empty
             "column_index": 4, # the index of the column
             "column_name": "" # the name of the column (the header), if applicable
@@ -177,3 +177,11 @@ You can export the created .hart package into a docker container using the `hab 
 ```bash
 [5][default:/src:0]# hab pkg export docker brighthive/etp-uploader
 ```
+
+#### Run it!
+After exiting the studio by typing `exit`, run the docker container as follows:
+
+```bash
+$ docker run -it -p 5000:5000 brighthive/etp-uploader
+```
+We're cooking with gas! 🔥 🚀
