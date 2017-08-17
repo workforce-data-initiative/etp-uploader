@@ -7,7 +7,7 @@
 {% endblock heading %}
 
 {% block subheading %}
-{{ name }} {% trans -%}is a free hosted service for validating tabular data.{%- endtrans %} <a href="#documentation" title="{% trans %}Find out more{% endtrans %}">{% trans %}Find out more{% endtrans %}</a>
+{{ name }} {% trans -%}is a prototype web service for validating and collecting participant files from eligible training providers.{%- endtrans %} <a href="http://documentation.dataatwork.org/tpot/" title="{% trans %}Find out more{% endtrans %}">{% trans %}Find out more{% endtrans %}</a>
 {% endblock subheading %}
 
 {% block content %}
@@ -17,24 +17,12 @@
   <section id="validate" class="row">
     <div class="col-md-1">&nbsp;</div>
     <div class="col-md-10">
-      <h2>{% trans %}Let's get started{% endtrans %}</h2>
       {% call render_form(form, 'run_form', action='/reports',
       action_name='Validate', with_files=True) %}
 
       <div class="row">
-        <div class="col-md-8">
-          <h4>{% trans %}Add a data table (required){% endtrans %}</h4>
-        </div>
 
-        <div class="col-md-2">
-          <h4>{% trans %}File format{% endtrans %}</h4>
-        </div>
-
-        <div class="col-md-2">
-          <h4>{% trans %}Encoding{% endtrans %}</h4>
-        </div>
-
-        <div class="col-md-2 url_file_selector">
+        <div class="url_file_selector" style="display:none;">
 
           <div class="radio-inline">
             <input type="radio" name="data-field" id="data-field-2" class="data-field-file" value="option2" checked>
@@ -50,24 +38,29 @@
           </div>
 
         </div>
-        <div class="col-md-6">
+        <div class="col-md-8">
+          <h2>{% trans %}Select your participant file{% endtrans %}</h2>
           {{ render_field(form.data_file, with_label=False) }}
           {{ render_field(form.data_url, with_label=False) }}
         </div>
         <div class="col-md-2">
+          <br />
+          <h4>{% trans %}File format{% endtrans %}</h4>
           {{ render_field(form.format, with_label=False) }}
         </div>
         <div class="col-md-2">
+          <br />
+          <h4>{% trans %}Encoding{% endtrans %}</h4>
           {{ render_field(form.encoding, with_label=False) }}
         </div>
         <div class="col-md-12">
           <p class="help-block">
-            {% trans %}Choose URL or File to add a data source by your preferred method.{% endtrans %}
-	  </p>
+            {% trans %}Select your file and file format for validation and subsequent upload.{% endtrans %}
+	        </p>
+        </div>
+      </div>
 
-      <hr />
-
-      <div class="row">
+      <div class="row" style="display:none;">
         <div class="col-md-8">
           <h4>{% trans %}Add a data schema (optional){% endtrans %}</h4>
         </div>
@@ -80,80 +73,43 @@
         </div>
       </div>
 
-      <div class="row display-schema-fields">
-        <div class="col-md-2 url_file_selector">
-
-          <div class="radio-inline">
-            <input type="radio" name="schema-field" id="schema-field-2" class="schema-field-file" value="option2" checked>
-            <label for="schema-field-2">
-              {% trans %}File{% endtrans %}
-            </label>
-          </div>
-          <div class="radio-inline">
-            <input type="radio" name="schema-field" id="schema-field-1" class="schema-field-url" value="option1">
-            <label for="schema-field-1">
-              {% trans %}URL{% endtrans %}
-            </label>
-          </div>
-
+      <div class="row display-schema-fields" style="display:none;">
+        <div class="radio-inline">
+          <input type="radio" name="schema-field" id="schema-field-2" class="schema-field-file" value="option2">
+          <label for="schema-field-2">
+            {% trans %}File{% endtrans %}
+          </label>
         </div>
-        <div class="col-md-6">
-          {{ render_field(form.schema_url, with_label=False) }}
-          {{ render_field(form.schema_file, with_label=False) }}
+        <div class="radio-inline">
+          <input type="radio" name="schema-field" id="schema-field-1" class="schema-field-url" value="option1" checked>
+          <label for="schema-field-1">
+            {% trans %}URL{% endtrans %}
+          </label>
         </div>
-        <div class="col-md-2">
-          {{ render_field(form.schema_eg, with_label=False) }}
-        </div>
-        <div class="col-md-2">&nbsp;</div>
-        <div class="col-md-12">
-          <p class="help-block">
-            {% trans %}Choose URL or File to add a schema by your preferred method. Alternatively, choose a preset schema.{% endtrans %}
-          </p>
-        </div>
+        {{ render_field(form.schema_url, with_label=False) }}
+        {{ render_field(form.schema_file, with_label=False) }}
+        {{ render_field(form.schema_eg, with_label=False) }}
       </div>
 
       <hr />
 
       <div class="row">
-        <div class="col-md-4">
+        <div class="col-md-3">
           <h4>{% trans %}Stop on first error{% endtrans %}</h4>
         </div>
-        <div class="col-md-8">
+        <div class="col-md-1">
           <span>{{ render_field(form.fail_fast, with_label=False) }}</span>
         </div>
-        <div class="col-md-12">
+        <div class="col-md-4">
           <p class="help-block">
             {% trans %}Indicate whether validation should stop on the first error, or attempt to collect all errors.{% endtrans %}
           </p>
         </div>
       </div>
 
-      <div class="row">
-        <div class="col-md-4">
-          <h4>{% trans %}Ignore empty rows{% endtrans %}</h4>
-        </div>
-        <div class="col-md-8">
-          <span>{{ render_field(form.ignore_empty_rows, with_label=False) }}</span>
-        </div>
-        <div class="col-md-12">
-          <p class="help-block">
-            {% trans %}Indicate whether empty rows should be considered as errors, or simply ignored.{% endtrans %}
-          </p>
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="col-md-4">
-          <h4>{% trans %}Ignore duplicate rows{% endtrans %}</h4>
-        </div>
-        <div class="col-md-8">
-          <span>{{ render_field(form.ignore_duplicate_rows, with_label=False) }}</span>
-        </div>
-        <div class="col-md-12">
-          <p class="help-block">
-            {% trans %}Indicate whether duplicate rows should be considered as errors, or simply ignored.{% endtrans %}
-          </p>
-        </div>
+      <div class="row" style="display:none;">
+        <span>{{ render_field(form.ignore_empty_rows, with_label=False) }}</span>
+        <span>{{ render_field(form.ignore_duplicate_rows, with_label=False) }}</span>
       </div>
 
       <hr />

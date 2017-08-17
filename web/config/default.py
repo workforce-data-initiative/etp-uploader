@@ -9,14 +9,14 @@ import os
 
 DEBUG = True
 SECRET_KEY = 'j$p^=yen)f#0lbfg#+*ip^2ufca4@8z1l2$jugael#z+n@ksasas2323h32'
-GOODTABLES_NAME = 'Good Tables'
-GOODTABLES_STATUS = "Beta"
+GOODTABLES_NAME = 'send.dataatwork.org'
+GOODTABLES_STATUS = "Alpha"
 GOODTABLES_SCHEME = os.environ.get('GOODTABLES_SCHEME', 'http://')
 GOODTABLES_DOMAIN = os.environ.get('GOODTABLES_DOMAIN', '127.0.0.1:5000')
 GOODTABLES_URL = '{0}{1}'.format(GOODTABLES_SCHEME, GOODTABLES_DOMAIN)
-GOODTABLES_SPONSOR = 'Open Knowledge'
-GOODTABLES_REPO = 'https://github.com/okfn/goodtables'
-GOODTABLES_ISSUES = 'https://github.com/okfn/goodtables-web/issues/new'
+GOODTABLES_SPONSOR = 'Workforce Data Initiative'
+GOODTABLES_REPO = 'https://github.com/workforce-data-initiative/etp-uploader'
+GOODTABLES_ISSUES = 'https://github.com/workforce-data-initiative/etp-uploader/issues/new'
 GOODTABLES_HELP_REPO = 'https://github.com/okfn/goodtables-web/edit/master/web/theme/templates/pages/help'
 GOODTABLES_PIPELINE_DEFAULT_CONFIG = {
     'processors': ('structure', 'schema'),

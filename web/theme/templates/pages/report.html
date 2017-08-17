@@ -16,20 +16,6 @@
 <span class="text-danger"><i class="fa fa-close"></i> {% trans %}Invalid{% endtrans %}</span>
 {% endif %}
 
-{% if permalinks %}
-<div class="dropdown pull-right" style="display: inline-block;">
-  <button class="btn btn-primary btn-lg" id="dLabel" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-   {% trans %}Share these results{% endtrans %}
-    <span class="caret"></span>
-  </button>
-  <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
-    <li><a href="{{ permalinks.json }}" title="">{% trans %}JSON Link{% endtrans %}</a></li>
-    <li><a href="{{ permalinks.html }}" title="">{% trans %}HTML Link{% endtrans %}</a></li>
-  </ul>
-</div>
-
-{% endif %}
-
 {% endif %}
 
 {% else %}
@@ -45,11 +31,7 @@
 <p>
   <strong>Results as JSON:</strong> <a href="{{ permalinks.json }}">Link</a><br>
   {% if sources.schema_url %}
-  <strong>JSON Schema</strong>: <a target="_blank" href="{{ sources.schema_url }}">{% trans %}View{% endtrans %}</a> / {{ sources.schema_url }}<br>
-  {% endif %}
-  {% if sources.data_url %}
-  <strong>Data File Preview</strong>: <a class="toggle-preview" data-preview="csv-preview" data-url="http://datapipes.okfnlabs.org/csv/head%C2%A0-n%C2%A01000/html?url={{ sources.data_url }}">Show/Hide</a> / {{ sources.data_url }}
-  <iframe class="csv-preview" style="width: 100%; height: 200px; display: inline-block;" src="http://datapipes.okfnlabs.org/csv/head%C2%A0-n%C2%A01000/html?url={{ sources.data_url }}"></iframe>
+  <strong>JSON Schema</strong>: <a target="_blank" href="{{ sources.schema_url }}">{% trans %}View{% endtrans %}</a><br>
   {% endif %}
 </p>
 
@@ -58,6 +40,29 @@
 {% else %}
 
 {% trans %}A total of <strong>{{ row_count }}</strong> rows of data were processed.{% endtrans %}
+
+{% if success %}
+<br />
+<div class="dropdown" style="display: inline-block;">
+  <form method="post" action="/upload">
+    <h4>Provider name:</h4>
+    <input type="text" name="name" /><br />
+    <h4>Provider address:</h4>
+    <input type="text" name="address" /><br />
+    <h4>Provider city:</h4>
+    <input type="text" name="city" /><br />
+    <h4>Provider zip:</h4>
+    <input type="text" name="zip" /><br />
+    <h4>Contact name:</h4>
+    <input type="text" name="contact_name" /><br />
+    <h4>Contact email:</h4>
+    <input type="text" name="contact_email" /><br />
+    <input type="checkbox" name="credentialengine">Also send to Credential Engine<br />
+    <br />
+    <input type="submit" value="Upload" class="btn btn-primary btn-lg" />
+  </form>
+</div>
+{% endif %}
 
 {% endif %}
 

@@ -1,15 +1,36 @@
-# Good Tables Web
+# ETP Uploader
 
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/workforce-data-initiative/etp-uploader/tree/wdi)
 [![Travis Build Status](https://travis-ci.org/frictionlessdata/goodtables.io.svg?branch=master)](https://travis-ci.org/frictionlessdata/goodtables.io)
 [![Coverage Status](https://coveralls.io/repos/frictionlessdata/goodtables.io/badge.svg)](https://coveralls.io/r/frictionlessdata/goodtables.io)
 
-A web API for validating data tables against a validation pipeline.
+A prototype web service for validating and collecting participant files from eligible training providers
 
-This package is part of a suite of table validation tools, providing a lightweight web interface to [Good Tables](https://github.com/okfn/goodtables).
+This package uses a suite of table validation tools based upon [Good Tables](https://github.com/okfn/goodtables).
+
+## The JSON Table Schema
+
+The heart of this package is the [JSON Table Schema](https://specs.frictionlessdata.io/table-schema/)
+that describes the required fields and their constraints. A draft specification
+is described within the [etp-uploader-schema.json](etp-uploader-schema.json).
+
+**TODO**: It would be nice to use the description field when displaying validation
+errors in order to give more effective feedback to the users when their data file
+isn't valid.
+
+## Goodtables-py
+
+The ETP Uploader package uses [Frictionless Data's Goodtables Python package](https://github.com/frictionlessdata/goodtables-py)
+to do its heavy lifting.  That library recently made some breaking API upgrade to
+version 1.0, but this package still uses the older 0.7.x API.  In the future it
+will be beneficial to migrate to the newer API, but for now we are using a
+[custom fork](https://github.com/workforce-data-initiative/goodtables-py) to
+provide ongoing support for the 0.7.x API.
 
 ## Runtime support
 
-Planned support for Python 2.7, 3.3 and 3.4. Some tests currently fail on 2.7. Development is proceeding on 3.4.
+Currently runs on Python 3.6.1.  Some historic support for 2.7, but development is
+conducted on Python 3.6+.
 
 ## Quickstart
 

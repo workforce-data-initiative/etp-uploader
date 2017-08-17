@@ -4,6 +4,8 @@ from __future__ import division
 from __future__ import print_function
 from __future__ import unicode_literals
 
+import os
+import boto3
 from flask import request, views, render_template
 from goodtables.utilities import helpers
 from ..commons import view_mixins
@@ -60,6 +62,15 @@ class Report(views.MethodView, view_mixins.RunPipelineMixin):
             if data['permalinks']:
                 data['url_state'] = data['permalinks']['html'].strip(request.url)
 
+        if data['success']:
+            session = boto3.session.Session(
+                aws_access_key_id=os.environ['AWS_ACCESS_KEY_ID'],
+                aws_secret_access_key=os.environ['AWS_SECRET_ACCESS_KEY']
+            )
+            stream = data['form'].data_file.data.stream
+            stream.seek(0)
+            session.resource('s3').Bucket(os.environ['AWS_S3_BUCKET_NAME']).put_object(Key='test.csv', Body=stream)
+
         return render_template(self.template, **data)
 
     def _process_report_data(self, report):
@@ -90,6 +101,22 @@ class Report(views.MethodView, view_mixins.RunPipelineMixin):
         }
 
         return processed
+
+class Upload(views.MethodView, view_mixins.RunPipelineMixin):
+
+    """Return upload success."""
+
+    template = 'pages/upload.html'
+    form_class = forms.RunForm
+
+    def get_data(self, **kwargs):
+
+        return {
+            'form': self.form_class(),
+        }
+
+    def post(self, **kwargs):
+        return render_template(self.template)
 
 
 class Help(views.MethodView):
