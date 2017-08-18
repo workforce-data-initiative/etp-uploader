@@ -41,6 +41,20 @@ conducted on Python 3.6+.
   * `pip install -r requirements/test.txt && pip install -r requirements/local.txt`
   * `./test.sh`
 
+## Environment variables
+If you want to run locally, you'll have to configure the following variables:
+```bash
+export JSON_TABLE_SCHEMA_URL="my-valid-url-to-my-defined-JSON-table-schema"
+export AWS_S3_BUCKET_NAME="my-s3-bucket-name-for-uploading-the-valid-data"
+export AWS_ACCESS_KEY_ID="my-access-keyID-from-my-aws-account"
+export AWS_SECRET_ACCESS_KEY="my-secret-access-key-from-my-aws-acount"
+```
+
+Once these variables are exported, you can now run it locally.
+```bash
+python main.py
+```
+
 ## What we've got
 
 ### `/` (Home)
