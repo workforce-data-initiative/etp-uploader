@@ -44,17 +44,6 @@ do_unpack() {
 }
 
 do_build() {
-  # build_line "Building python with shared libraries ..."
-  # PYTHON_VERSION=3.4.0
-  # mkdir -p /usr/src/python \
-  #   && wget -SL "https://www.python.org/ftp/python/$PYTHON_VERSION/Python-$PYTHON_VERSION.tar.xz" \
-  #   && tar -xJf "Python-$PYTHON_VERSION.tar.xz" -C /usr/src/python --strip-components=1 \
-  #   && cd /usr/src/python \
-  #   && ./configure \
-  #   && make -j$(nproc) \
-  #   && make install \
-  # && cd / \
-  # && rm -rf /usr/src/python
   return 0
 }
 
