@@ -35,8 +35,10 @@ def get_pipeline(runargs=None):
     config = app.config['GOODTABLES_PIPELINE_DEFAULT_CONFIG']
     if runargs:
         config['options']['schema']['schema'] = runargs.pop('schema')
-        config['options']['structure']['ignore_empty_rows'] = runargs.pop('ignore_empty_rows')
-        config['options']['structure']['ignore_duplicate_rows'] = runargs.pop('ignore_duplicate_rows')
+        config['options']['structure']['ignore_empty_rows'] = runargs.pop(
+            'ignore_empty_rows')
+        config['options']['structure']['ignore_duplicate_rows'] = runargs.pop(
+            'ignore_duplicate_rows')
         config.update(runargs)
     try:
         rv = pipeline.Pipeline(**config)
@@ -110,7 +112,7 @@ def resolve_payload_item(key, payload):
 def get_report_permalinks(payload):
 
     if not isinstance(payload['data'], (io.IOBase, FileStorage)) and \
-           compat.parse.urlparse(payload['data']).scheme in REMOTE_SCHEMES:
+            compat.parse.urlparse(payload['data']).scheme in REMOTE_SCHEMES:
         if not hasattr(payload.get('schema'), 'filename'):
             domain = app.config['GOODTABLES_URL']
             api_fragment = url_for('api.run')

@@ -5,6 +5,7 @@ from __future__ import print_function
 from __future__ import unicode_literals
 
 import os
+import io
 import uuid
 import json
 import boto3
@@ -66,13 +67,17 @@ class Report(views.MethodView, view_mixins.RunPipelineMixin):
 
         if data['success']:
             data['uuid'] = str(uuid.uuid4())
-            session = boto3.session.Session(
-                aws_access_key_id=os.environ['AWS_ACCESS_KEY_ID'],
-                aws_secret_access_key=os.environ['AWS_SECRET_ACCESS_KEY']
-            )
             stream = data['form'].data_file.data.stream
             stream.seek(0)
-            session.resource('s3').Bucket(os.environ['AWS_S3_BUCKET_NAME']).put_object(Key=data['uuid']+'.csv', Body=stream)
+            filename = data['uuid'] + '.csv'
+            print(filename + ' uploaded')
+            try:
+                os.makedirs(os.path.join('CSV'))
+            except (FileExistsError, NameError):
+                pass
+            datafile = open(os.path.join('CSV', filename), 'wb')
+            datafile.write(stream.read())
+            datafile.close()
 
         return render_template(self.template, **data)
 
@@ -105,6 +110,7 @@ class Report(views.MethodView, view_mixins.RunPipelineMixin):
 
         return processed
 
+
 class Upload(views.MethodView, view_mixins.RunPipelineMixin):
 
     """Return upload success."""
@@ -121,12 +127,10 @@ class Upload(views.MethodView, view_mixins.RunPipelineMixin):
     def post(self, **kwargs):
         data = dict(request.form)
         uuid = data.pop('uuid')[0]
-        print(uuid)
-        session = boto3.session.Session(
-            aws_access_key_id=os.environ['AWS_ACCESS_KEY_ID'],
-            aws_secret_access_key=os.environ['AWS_SECRET_ACCESS_KEY']
-        )
-        session.resource('s3').Bucket(os.environ['AWS_S3_BUCKET_NAME']).put_object(Key=uuid+'.json', Body=json.dumps(data))
+        jsonfile = uuid + '.json'
+        with open(os.path.join('CSV', jsonfile), 'w') as fp:
+            fp.write(json.dumps(data, indent=4))
+        print(uuid + '.json uploaded')
         return render_template(self.template)
 
 

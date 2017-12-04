@@ -36,24 +36,15 @@ conducted on Python 3.6+.
 
 * Clone the repository into a virtual environment
 * Install dependencies: `pip install -r requirements.txt`
-* Run a server: `python main.py`
-* Run the tests:
+* Set environment variable: `./init.sh`
+
+  (You can use the simple command `python -m SimpleHTTPServer` to serve the `participant_schema.json` in the __sample_data__ folder locally)
+* Run the tests: 
   * `pip install -r requirements/test.txt && pip install -r requirements/local.txt`
   * `./test.sh`
+* Run a server: `python main.py`
 
-## Environment variables
-If you want to run locally, you'll have to configure the following variables:
-```bash
-export JSON_TABLE_SCHEMA_URL="my-valid-url-to-my-defined-JSON-table-schema"
-export AWS_S3_BUCKET_NAME="my-s3-bucket-name-for-uploading-the-valid-data"
-export AWS_ACCESS_KEY_ID="my-access-keyID-from-my-aws-account"
-export AWS_SECRET_ACCESS_KEY="my-secret-access-key-from-my-aws-acount"
-```
-
-Once these variables are exported, you can now run it locally.
-```bash
-python main.py
-```
+The sample csv files for upload are in the `sample_data` directory.
 
 ## What we've got
 
@@ -110,7 +101,7 @@ curl http://goodtables.okfnlabs.org/api/run --data "data=https://raw.githubuserc
             "result_message": "Row 1 is defective: there are more cells than headers", # a message that describes the result
             "result_name": "Defective Row", # a human-readable title for this result
             "result_context": ['38', 'John', '', ''], # the row values from which this result triggered
-            "row_index": 1, # the index of the row
+            "row_index": 1, # the idnex of the row
             "row_name": "", # If the row has an id field, this is displayed, otherwise empty
             "column_index": 4, # the index of the column
             "column_name": "" # the name of the column (the header), if applicable
@@ -127,75 +118,4 @@ The UI is a simple form to add data, with an option schema, from either URLs or 
 
 #### Example
 
-<img src="https://dl.dropboxusercontent.com/u/13029373/okfn/ui.gif" />
-
-
-### Automating deployment using habitat
-
-[Habitat](https://www.habitat.sh/) helps package an app or service into containers that can be run in any infrastructure, without committing to a specific container format or platform.
-
-#### Installing habitat
-To install habitat, simply download the binary.
-* Unzip `hab` into `/usr/local/bin`. To do this:
-    * Unzip the downloaded folder
-    * Navigate to the unzipped folder by running `cd` followed by the file location
-        * For example: `cd /Users/Rachel/Downloads/hab-0.28.0-20170729010833-x86_64-darwin`
-        (If you're using a Mac, you can insert the location by dragging the unzipped file into the terminal)
-    * Run `cp hab /usr/local/bin`
-        * If you receive an error saying Permission Denied, run `sudo cp hab /usr/local/bin`
-* Run `sudo chmod a+x hab` to make it executable.
-* You'll also need docker installed if on Mac. Find docker [here](https://store.docker.com/editions/community/docker-ce-desktop-mac)
-* To confirm if habitat is installed, re-open your terminal and type `hab` then press enter. You should see a list menu with all the habitat options available. Moving on swiftly!
-
-
-#### Setup a habitat origin
-* Run `hab setup` and set the origin name to **`brighthive`**.
-* Go to Settings on your github account and create a Personal Access Token under Developer Settings. Here's a link to get you [there](https://github.com/settings/tokens/new).
-
-The GitHub personal access token needs information provided from the `user:email` and `read:org` OAuth scopes. Habitat uses the information provided through these scopes for authentication and to determine features based on team membership.
-
-This is how it should look like when running the setup:
-<img width="636" alt="screenshot 2017-07-28 18 18 26" src="https://user-images.githubusercontent.com/15085180/28724015-5ac259ca-73c1-11e7-9eda-94e1fe74b3f2.png">
-
-
-#### Running etp-uploader using habitat
-* Cd into the repo's directory
-```bash
-cd etp-uploader
-```
-
-* Enter the habitat studio
-```bash
-hab studio enter
-```
-This is an awesome isolated environment for building great things so that when building, it doesn't affect anything on your computer.
-Let's go ahead and build the etp-uploader!
-
-* Inside the studio, run the `build` command to execute the etp-uploader plan
-```bash
-[5][default:/src:0]# build
-```
-When finished building, you should see this message
-`etp-uploader: I love it when a plan.sh comes together.`
-
-The build bundles up the etp-uploader source code, dependencies, runtime and other server configurations into a habitat .hart package. This package can now be exported to docker.
-
-In linux environments, the package can then be run directly using this simple command:
-```bash
-$ hab start brighthive/etp-uploader
-```
-
-#### Exporting to docker
-You can export the created .hart package into a docker container using the `hab pkg export docker` command as follows:
-
-```bash
-[5][default:/src:0]# hab pkg export docker brighthive/etp-uploader
-```
-
-#### Run it!
-After exiting the studio by typing `exit`, run the docker container as follows:
-
-```bash
-$ docker run -it -p 5000:5000 brighthive/etp-uploader
-```
-We're cooking with gas! 🔥 🚀
+<img src="https://i.imgur.com/kpGvn6G.gif" />

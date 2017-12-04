@@ -1,4 +1,1 @@
-{
-  "tests/test_get.py::TestAPIGet::test_get_valid_url_upload": true,
-  "tests/test_post.py::TestAPIPost::test_post_valid_url_upload": true
-}
+{}

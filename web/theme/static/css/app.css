@@ -3025,7 +3025,7 @@ a.btn.disabled, fieldset[disabled] a.btn {
 .btn-success {
   color: #fff;
   background-color: #8acd00;
-  border-color: #79b400; }
+  border-color: #79b300; }
   .btn-success:focus, .btn-success.focus {
     color: #fff;
     background-color: #689a00;
@@ -3046,7 +3046,7 @@ a.btn.disabled, fieldset[disabled] a.btn {
     background-image: none; }
   .btn-success.disabled:hover, .btn-success.disabled:focus, .btn-success.disabled.focus, .btn-success[disabled]:hover, .btn-success[disabled]:focus, .btn-success[disabled].focus, fieldset[disabled] .btn-success:hover, fieldset[disabled] .btn-success:focus, fieldset[disabled] .btn-success.focus {
     background-color: #8acd00;
-    border-color: #79b400; }
+    border-color: #79b300; }
   .btn-success .badge {
     color: #8acd00;
     background-color: #fff; }
@@ -3112,7 +3112,7 @@ a.btn.disabled, fieldset[disabled] a.btn {
 .btn-danger {
   color: #fff;
   background-color: #cd0000;
-  border-color: #b40000; }
+  border-color: #b30000; }
   .btn-danger:focus, .btn-danger.focus {
     color: #fff;
     background-color: #9a0000;
@@ -3133,7 +3133,7 @@ a.btn.disabled, fieldset[disabled] a.btn {
     background-image: none; }
   .btn-danger.disabled:hover, .btn-danger.disabled:focus, .btn-danger.disabled.focus, .btn-danger[disabled]:hover, .btn-danger[disabled]:focus, .btn-danger[disabled].focus, fieldset[disabled] .btn-danger:hover, fieldset[disabled] .btn-danger:focus, fieldset[disabled] .btn-danger.focus {
     background-color: #cd0000;
-    border-color: #b40000; }
+    border-color: #b30000; }
   .btn-danger .badge {
     color: #cd0000;
     background-color: #fff; }

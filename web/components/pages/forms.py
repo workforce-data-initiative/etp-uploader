@@ -52,7 +52,7 @@ schema_url_args = {
 schema_file_args = schema_url_args.copy()
 schema_file_args['validators'] = [OnlyIfNot('schema_url'), validators.Optional()]
 format_args = {
-    'choices': [('csv', 'CSV'), ('excel', 'Excel')], #, ('json', 'JSON')],
+    'choices': [('csv', 'CSV'), ('excel', 'Excel')],  # , ('json', 'JSON')],
     'description': {
         'placeholder': 'CSV',
         'hint': ''
