@@ -38,10 +38,15 @@
           </div>
 
         </div>
-        <div class="col-md-8">
-          <h2>{% trans %}Select your participant file{% endtrans %}</h2>
+        <div class="col-md-6">
+          <h2>{% trans %}Select your data file{% endtrans %}</h2>
           {{ render_field(form.data_file, with_label=False) }}
           {{ render_field(form.data_url, with_label=False) }}
+        </div>
+        <div class="col-md-2">
+          <br />
+          <h4>{% trans %}Type of data{% endtrans %}</h4>
+          {{ render_field(form.upload_data_type, with_label=False) }}
         </div>
         <div class="col-md-2">
           <br />

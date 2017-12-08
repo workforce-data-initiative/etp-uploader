@@ -94,6 +94,21 @@ encoding_args = {
         'hint': ''
     }
 }
+
+# Add as environment variables
+participant_table_schema_url=''
+programs_table_schema_url=''
+credential_table_schema_url=''
+
+
+upload_data_type = {
+    'label': 'Upload Data option',
+    'choices': [(participant_table_schema_url, 'Participants'), (programs_table_schema_url, 'Programs'), (credential_table_schema_url, 'Credentials')],
+    'description': {
+        'hint': ''
+    }
+}
+
 report_type_args = {
     'label': 'Report type',
     'default': 'grouped'
@@ -104,11 +119,12 @@ class RunForm(Form):
     data_url = fields.StringField(**data_url_args)
     data_file = fields.FileField(**data_file_args)
     format = fields.SelectField(**format_args)
-    schema_url = fields.StringField(default=os.environ['JSON_TABLE_SCHEMA_URL'], **schema_url_args)
+    schema_url = fields.SelectField(**upload_data_type)
     schema_file = fields.FileField(**schema_file_args)
     schema_eg = fields.SelectField(**schema_eg_args)
     fail_fast = fields.BooleanField(default=False, **fail_fast_args)
     encoding = fields.SelectField(**encoding_args)
+    upload_data_type = fields.SelectField(**upload_data_type)
     report_type = fields.HiddenField(**report_type_args)
     ignore_empty_rows = fields.BooleanField(default=False, **ignore_empty_rows_args)
     ignore_duplicate_rows = fields.BooleanField(default=False, **ignore_duplicate_rows_args)
