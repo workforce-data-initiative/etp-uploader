@@ -4,6 +4,7 @@ from __future__ import division
 from __future__ import print_function
 from __future__ import unicode_literals
 
+import os
 from web import factory
 from web.config import default
 
@@ -16,4 +17,4 @@ if app.config['DEBUG']:
 
 
 if __name__ == '__main__':
-    app.run()
+    app.run(host='0.0.0.0', port=int(os.getenv('PORT')))
